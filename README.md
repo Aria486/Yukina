@@ -74,6 +74,21 @@ db.users.ensureIndex({"username":1},{"unique":true})
 {"x" : ["a","b","c"]}
 ```
 
+8.内嵌文档
+```
+{"x" : {"foo" : "bar"}}
+```
 
+9.对象id
+```
+{"x" : ObjectId()}
+```
+
+10.二进制数据
+
+11.代码: 查询和文档中可以包括任意JavaScript代码
+```
+{"x" : function() {}}
+```
 
 

@@ -1,5 +1,5 @@
 # MongoDB
-## 环境
+## [安装环境](https://github.com/Aria486/Yukina/blob/master/book/MongoDB.md)
 -----------------------------------
 ## 基本
 ### 1.文档

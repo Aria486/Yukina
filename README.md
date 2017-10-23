@@ -1,9 +1,6 @@
 # MongoDB
+## [MongoDB]()
 ## [安装环境](https://github.com/Aria486/Yukina/blob/master/book/%E5%AE%89%E8%A3%85%E7%8E%AF%E5%A2%83.md)
------------------------------------
-## 基本
-### 1.文档
-文档是键值对的一个有序集。
 ## [基本操作](https://github.com/Aria486/Yukina/blob/master/book/%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C.md)
 
 

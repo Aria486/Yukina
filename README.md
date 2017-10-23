@@ -38,4 +38,19 @@ db.users.remove({'username':'admin'})
 ```	
 db.users.ensureIndex({"username":1},{"unique":true})
 ```
+###3.基本数据类型
+·null：null表示空值或者不存在的字段
+```
+{"x" : null}
+```
+·boolean型: ture,false
+·数值: shell默认使用64位浮点数值型
+```
+{"x" : 3.14}
+或
+{"x" : 3}
+
+整型: {"x" : NumberInt("3")}和{"x" : Number("3")}
+```
+
 

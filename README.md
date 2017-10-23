@@ -21,7 +21,18 @@ db.users.update(
     { "username": "admin" },
     { "$set": { "password": "123456" } }
 )
+
+如果要增添用户生日
+db.users.update(
+    { "username": "admin" },
+    { "$set": { "birthday": "199x-xx-xx" } }
+)
+此时会多一条birthday键
+
+"$set"也可以修改键的类型
+删除键则可用"$unset"
 ```
+
 4.插入
 ```
 db.users.insert({

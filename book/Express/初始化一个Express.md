@@ -12,8 +12,9 @@ Express 框架核心特性：
 
 1.输入以下命令
 ```
-expree -e myexpress
+expree --view=ejs myexpress
 ```
+![如图](https://github.com/Aria486/Yukina/blob/master/img/expres.jpg)
 
 
 2.目录结构说明  

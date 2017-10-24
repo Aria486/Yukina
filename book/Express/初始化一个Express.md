@@ -28,3 +28,4 @@ expree --view=ejs myexpress
 
 
 3.运行 node index，打开浏览器访问 localhost:3000 时，页面应显示 hello, express
+

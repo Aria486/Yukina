@@ -7,7 +7,7 @@
 |23日|Express|了解Express结构以及工作原理，理解模版引擎|  
 |24日|monggodb|理解关系型数据库以及非关系型数据库的差别，monggodb的适用范围，基本语法以及使用|  
 |25日|mongoose，monggodb|在理解mongoDB一些的基础上，查看mongoose的作用并查看官方文档，留出一个小时练习monggodb的语句操作|  
-|26日|async，monggodb|anysc的产生需求，anysc的解决的问题，什么情况下使用,所涉及的方法，留出一个小时练习monggodb的语句操作|  
+|26日|async，react|anysc的产生需求，anysc的解决的问题，什么情况下使用,所涉及的方法，了解react以及适用范围|  
 |27日|总结|如有进度怠慢，则进行补缺|  
  
  

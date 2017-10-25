@@ -1,5 +1,8 @@
 *有什么问题，请写进issuses中*
 
+# [计划](https://github.com/Aria486/Yukina/blob/master/book/plan/plan.md)
+
+
 # Node.js
 ## 目录
 上周markdown修改后更新

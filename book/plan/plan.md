@@ -17,12 +17,13 @@
  
 
 2017年10月30日----2017年11月3日
+
 |时间|查看技术|备注|  
 |:---:|:----:|:---:|  
-|23日|react|学习react和webpack|  
-|24日|Express|使用express和mongoose进行简单注册和登录，学习react和redux|  
-|25日|实现session存储用户信息|使用session存储信息和connect-flash反馈提示|  
-|26日|---|----|  
-|27日|总结|如有进度怠慢，则进行补缺|  
+|30日|react|学习react和webpack|  
+|31日|Express|使用express和mongoose进行简单注册和登录，学习react和redux|  
+|01日|实现session存储用户信息|使用session存储信息和connect-flash反馈提示|  
+|02日|---|----|  
+|03日|总结|如有进度怠慢，则进行补缺|  
  
 

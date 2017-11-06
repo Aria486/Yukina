@@ -2,7 +2,7 @@
 
 ![Node.js Architecture](http://img4.tbcdn.cn/L1/461/1/a9e67142615f49863438cc0086b594e48984d1c9)
 
-我们可以看到，Node.js 的结构大致分为三个层次：
+可以看到，Node.js 的结构大致分为三个层次：
 
 - Node.js 标准库，这部分是由 Javascript 编写的，即我们使用过程中直接能调用的 API。在源码中的 [lib](https://github.com/nodejs/node/tree/master/lib) 目录下可以看到。
 - Node bindings，这一层是 Javascript 与底层 C/C++ 能够沟通的关键，前者通过 bindings 调用后者，相互交换数据。实现在 [node.cc](https://github.com/nodejs/node/blob/master/src/node.cc)
@@ -158,26 +158,6 @@ try {
 }
 
 ```
-
-至于这些方法如何实现的，我们下回再论。
-
-## 一些可能的瓶颈
-
-这里只见到讨论下自己的理解，欢迎指正。
-
-首先，文件的 I/O 方面，用户代码的运行，事件循环的通知等，是通过 Libuv 维护的线程池来进行操作的，它会运行全部的文件系统操作。既然这样，我们抛开硬盘的影响，对于严谨的 C/C++ 来说，这个线程池一定是有大小限制的。官方默认给出的大小是 **4**。当然是可以改变的。在启动时，通过设置 `UV_THREADPOOL_SIZE` 来改变这个值即可。不过，最大也只能是 **128**，因为这个是涉及到内存占用的。
-
-这个线程池对于所有的事件循环是共享的。当一个函数要使用线程池的时候（比如调用 `uv_queue_work`），Libuv 会预先分配并初始化 `UV_THREADPOOL_SIZE` 所允许的线程出来。而**128** 占用的内存大约是 1MB，如果设置的太高，当使用线程池频繁时，会因为内存占用过多而降低线程的性能。[具体说明](https://github.com/libuv/libuv/blob/master/docs/src/threadpool.rst);
-
-对于网络 I/O 方面，以 Linux 系统下来说，网络 I/O 采用的是 epoll 这个异步模型。它的优点是采用了事件回调的方式，大大降低了文件描述符的创建（Linux下什么都是文件）。
-
-在每次调用 `epoll_wait` 时，实际返回的是就绪描述符的数量，根据这个值，去 epoll 指定的数组里面取对应数量的描述符，是一种 **内存映射** 的方式，减少了文件描述符的复制开销。
-
-上面提到的 epoll 指定的数组，它的大小即可监听的数量大小，它在不同的系统下，有不同的默认值，可见这里 [epoll create](https://github.com/nodejs/node/blob/master/deps/uv/src/unix/linux-syscalls.c#L80)。
-
-有了大小的限制，还远不够，为了保证运行的稳定，防止你在调用 epoll 函数时，指针越界，导致内存泄漏。还会用到另外一个值 `maxevents`，它是 `epoll_wait` 所能处理的最大数量，在调用 `epoll_wait` 时可以指定。一般情况下小于创建时（epoll_create）的数组大小，当然，也可以设置的比 size 大，不过应该没什么用。可以想到如果就绪的事件很多，超过了 `maxevents`，那么超出的事件就要等待前面的事件处理完成，才可以继续，可能会导致效率的下降。
-
-在这种情况下，你可能会担心事件会丢失。其实，是不会丢失的，它会通过 `ep_collect_ready_items` 将这些事件保存在一个队列中，在下一个 `epoll_wait` 再进行通知。
 
 ## Node.js 不适合做什么
 

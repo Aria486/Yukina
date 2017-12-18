@@ -5,8 +5,11 @@
 
 # Node.js
 ## 目录
-上周markdown修改后更新
 
+代理问题解决
+npm config set proxy false
+
+npm cache clean
 ********************************************
 
 
